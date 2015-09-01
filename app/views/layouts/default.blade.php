@@ -20,8 +20,11 @@
         {{ HTML::style('css/custom.css') }}
         {{ HTML::style('js/slick/slick.css') }}
         {{ HTML::style('css/ui-lightness/jquery-ui-1.9.2.custom.css') }}
+        {{ HTML::style('js/jplayer/css/not.the.skin.css') }}
+        {{ HTML::style('js/jplayer/circle.skin/circle.player.css') }}
         {{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css') }}
-          <script src="https://www.google.com/recaptcha/api.js?hl={{ Session::get('lang','es') }}"></script>
+        <script src="https://www.google.com/recaptcha/api.js?hl={{ Session::get('lang','es') }}"></script>
+
     </head>
     <body>
       <div class="contLoading">
@@ -62,11 +65,27 @@
             </div>
             <div class="redes no-in si-in">
               <a target="_blank" href="https://www.facebook.com/profile.php?id=100009094386701&fref=ts"><div class="contRed" style="padding:1em 1.5em;"><i class="fa fa-facebook fa-3x"></i></div></a>
-              <a target="_blank" href="https://twitter.com/DYVANmoda"><div class="contRed"><i class="fa fa-twitter fa-3x"></i></div></a>
-              <a target="_blank" href="http://i.instagram.com/dyvanmoda/"><div class="contRed" style="padding: 1.1em 1.4em;"><i class="fa fa-instagram fa-3x"></i></div></a>
-              <a target="_blank" href="https://es.pinterest.com/DYVANmoda/"><div class="contRed" style="padding:1em 1.5em;"><i class="fa fa-pinterest-p fa-3x"></i></div></a>
-              <p style="font-size:1.3em;margin-top: 2em;"><a href="{{ URL::to('terminos-y-condiciones') }}">{{ Lang::get('lang.term_title0') }}</a>/<a href="{{ URL::to('politicas-de-privacidad') }}">{{ ucfirst(strtolower(Lang::get('lang.term_title13'))) }}</a><br>{{ Lang::get('lang.delevoped') }} <a href="http://tecnographic.com.ve" target="_blank">Tecnographic Venezuela C.A.</a></p>
+              <a target="_blank" href="https://twitter.com/nia"><div class="contRed"><i class="fa fa-twitter fa-3x"></i></div></a>
+              <a target="_blank" href="http://i.instagram.com/nia/"><div class="contRed" style="padding: 1.1em 1.4em;"><i class="fa fa-instagram fa-3x"></i></div></a>
+              <a target="_blank" href="https://es.pinterest.com/nia/"><div class="contRed" style="padding:1em 1.5em;"><i class="fa fa-pinterest-p fa-3x"></i></div></a>
               
+              <p style="font-size:1.3em;margin-top: 2em;"><a href="{{ URL::to('terminos-y-condiciones') }}">{{ Lang::get('lang.term_title0') }}</a>/<a href="{{ URL::to('politicas-de-privacidad') }}">{{ ucfirst(strtolower(Lang::get('lang.term_title13'))) }}</a><br>{{ Lang::get('lang.delevoped') }} <a href="http://tecnographic.com.ve" target="_blank">Tecnographic Venezuela C.A.</a></p>
+              <div id="jquery_jplayer_1" class="cp-jplayer"></div>
+              <div id="cp_container_1" class="cp-container">
+                <div class="cp-buffer-holder"> <!-- .cp-gt50 only needed when buffer is > than 50% -->
+                  <div class="cp-buffer-1"></div>
+                  <div class="cp-buffer-2"></div>
+                </div>
+                <div class="cp-progress-holder"> <!-- .cp-gt50 only needed when progress is > than 50% -->
+                  <div class="cp-progress-1"></div>
+                  <div class="cp-progress-2"></div>
+                </div>
+                <div class="cp-circle-control"></div>
+                <ul class="cp-controls">
+                  <li><a class="cp-play" tabindex="1">play</a></li>
+                  <li><a class="cp-pause" style="display:none;" tabindex="1">pause</a></li> <!-- Needs the inline style here, or jQuery.show() uses display:inline instead of display:block -->
+                </ul>
+              </div>
               
               
             </div>
@@ -128,6 +147,13 @@
         {{ HTML::script('js/custom.js') }}
         {{ HTML::script('js/jquery.coolcarousel.js') }}
         {{ HTML::script('js/jquery-ui-1.9.2.custom.js') }}
+       
+
+        {{ HTML::script('js/jplayer/js/jquery.transform2d.js') }}        
+        {{ HTML::script('js/jplayer/js/jquery.grab.js') }}
+        {{ HTML::script('js/jplayer/js/jquery.jplayer.js') }}
+            {{ HTML::script('js/jplayer/js/mod.csstransforms.min.js') }}    
+        {{ HTML::script('js/jplayer/js/circle.player.js') }}
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -139,6 +165,20 @@
           ga('send', 'pageview');
 
         </script>
+        <script type="text/javascript">
+          //<![CDATA[
+          function getRootUrl () {
+            return window.location.origin?window.location.origin+'/':window.location.protocol+'/'+window.location.host+'/';
+          }
+          var myCirclePlayer = new CirclePlayer("#jquery_jplayer_1",
+          {
+            m4a: "http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a",
+            oga: "http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg"
+          }, {
+            cssSelectorAncestor: "#cp_container_1"
+          });
+          //]]>
+          </script>
         <!--Start of Zopim Live Chat Script-->
         <script type="text/javascript">
         window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=

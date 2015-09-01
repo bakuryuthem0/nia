@@ -1589,3 +1589,53 @@ animated buttons - animate the text inside prev and next buttons
     display: none !important;
   }
 }
+.redes .cp-container
+{
+  background-position: 50% 50%;  
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-size: 200% 200%;
+  padding: 0;
+}
+.redes #cp_container_1
+{
+  display: block;
+  margin: 0 auto;
+}
+.redes .cp-controls li
+{
+  top: 25%;
+  left: 25%;
+}
+.redes .cp-controls li a.cp-play
+{
+  background-position: 0 0;
+}
+.redes .cp-controls .cp-play:hover
+{
+    background-position: 100% 0;
+    background-size: 200% 200%;
+}
+.redes .cp-controls li a
+{
+  width: 25px;
+  height: 25px;
+  background-size: 200% 200%;
+}
+
+.redes .cp-controls li a.cp-pause
+{
+  background-position: 0 100%;
+}
+.redes .cp-controls .cp-pause:hover
+{
+    background-position: 100% 100%;
+    background-size: 200% 200%;
+}
+.redes .cp-buffer-1,.redes .cp-buffer-2,.redes .cp-progress-1,.redes .cp-progress-2,.redes .cp-buffer-holder,.redes .cp-progress-holder,.redes .cp-circle-control
+{
+  width: 50px;
+  height: 50px;
+  background-size: 100%;
+}
