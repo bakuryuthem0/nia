@@ -1409,6 +1409,10 @@ animated buttons - animate the text inside prev and next buttons
   display: table-cell;
 }
 @media(max-width: 991px){
+  body
+  {
+    background-image: url(../images/fondo.jpg);
+  }
   header.active
   {
     width: 100% !important;
@@ -1420,7 +1424,8 @@ animated buttons - animate the text inside prev and next buttons
   {
     max-height: 100% !important;
     width: 100%;
-    position: absolute;
+    position: fixed;
+    background-color: black;
     bottom: 0;
     z-index: 10;
 
@@ -1636,6 +1641,7 @@ animated buttons - animate the text inside prev and next buttons
   background-size: 100%;
 }
 @media(max-width: 991px){
+
   .carousel
   {
     display: none;
