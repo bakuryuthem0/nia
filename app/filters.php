@@ -41,7 +41,7 @@ Route::filter('auth', function()
 Route::filter('no_auth', function()
 {
 	if (Auth::check()){ 
-		return Redirect::to('inicio');
+		return Redirect::to('iniciar-sesion');
 	}
 });
 Route::filter('check_role', function()

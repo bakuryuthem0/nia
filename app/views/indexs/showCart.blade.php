@@ -172,10 +172,19 @@
     </div>
     @if(!isset($method))
     <div class="collapse contdeColor col-xs-12 scrollTo" id="continuar" style="margin-top:2em;">
-      <div class="col-xs-6 containerMovil">
+      <div class="col-xs-12 col-md-12 containerMovil" style="padding:0px;">
+        <form method="POST" action="{{ URL::to('comprar/ver-carrito/enviar') }}">
+          <legend>Seleccione la sucursal para envio de fletes chavales s.a.</legend>
+          <select autocomplete="off" name="suc" class="form-control" style="margin-bottom:1em;">
+            @foreach($suc as $s)
+              <option value="{{ $s->id }}">Sucursal {{ ucfirst(strtolower($s->nombre)) }}</option>
+            @endforeach
+          </select>
+          <button class="btn btn-success">Comprar</button>
+        </form>
        @if((!empty(Auth::user()->dir) && !is_null(Auth::user()->dir)) || count($dir) > 0)
-       <h3>Usar dirección existente</h3>
-       <hr>
+       {{--<h3>Usar dirección existente</h3>
+        <hr>
        <form method="POST" action="{{ URL::to('comprar/ver-carrito/enviar') }}">
         <table class="table table-hover table-dir">
           <thead>
@@ -185,61 +194,62 @@
               <th>Dirección</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody>--}}
             @if(!empty(Auth::user()->dir) && !is_null(Auth::user()->dir))
-              <tr>
+               {{--<tr>
                 <td class="textoPromedio" ><input type="radio" name="dir" value="user_id"></td>
                 <td class="textoPromedio" >{{ Auth::user()->email }}</td>
                 <td class="textoPromedio" >{{ Auth::user()->dir }}</td>
-              </tr>
+              </tr>--}}
             @endif
 
             @if(count($dir) > 0)
               @foreach($dir as $d)
-                <tr>
+                 {{--<tr>
                   <td class="textoPromedio" ><input type="radio" name="dir" value="{{ $d->id }}"></td>
                   <td class="textoPromedio" >{{ $d->email }}</td>
                   <td class="textoPromedio" >{{ $d->dir }}</td>
-                </tr>
+                </tr>--}}
               @endforeach
             @endif
-
+{{--
           </tbody>
         </table>
+
         <button class="btn btn-success">Comprar</button>
-      </form>
+      </form> --}}
       @endif
       </div>
-      <div class="col-xs-6 containerMovil">
+      {{-- <div class="col-xs-12 col-md-6 containerMovil">
         <h3>Usar nueva direccion</h3>
         <hr>
         <p class="bg-info textoPromedio textoNegro" style="padding:0.5em;">En caso de no tener una direccion registrada o desee agregar una nueva llene el siguiente formulario</p>
         <form method="POST" action="{{ URL::to('comprar/ver-carrito/agragar-y-comprar') }}" >
           <label class="textoPromedio">Email.</label>
-          <input type="text" class="form-control" name="email" placeholder="Email" value="{{ Input::old('email') }}" required>
+          <input type="text" class="form-control" name="email" placeholder="Email" value="{{ Input::old('email') }}" required> --}}
           @if ($errors->has('email'))
              @foreach($errors->get('email') as $err)
-              <div class="alert alert-danger">
+               {{--<div class="alert alert-danger">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <p class="textoPromedio">{{ $err }}</p>
-              </div>
+              </div>--}}
              @endforeach
           @endif
-          <br>
+           {{--<br>
           <label class="textoPromedio">Dirección</label>
-          <textarea class="form-control" name="dir" placeholder="Dirección" required>{{ Input::old('dir') }}</textarea>
+          <textarea class="form-control" name="dir" placeholder="Dirección" required>{{ Input::old('dir') }}</textarea>--}}
           @if ($errors->has('dir'))
                @foreach($errors->get('dir') as $err)
-                <div class="alert alert-danger">
+                {{-- <div class="alert alert-danger">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                   <p class="textoPromedio">{{ $err }}</p>
-                </div>
+                </div>--}}
                @endforeach
             @endif
-          <br>
+           {{--<br>
           <button class="btn btn-success">Enviar y comprar</button>
         </form>
-      </div>
+      </div> --}}
     </div>
     @else
     <div class="contdeColor col-xs-12 scrollTo" style="margin-top:2em;">

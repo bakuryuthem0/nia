@@ -26,11 +26,11 @@
         <script src="https://www.google.com/recaptcha/api.js?hl={{ Session::get('lang','es') }}"></script>
 
     </head>
-    <body>
-      <div class="contLoading">
+    <body data-play="{{ Session::get('play') }}">
+      <div class="contLoading ">
         <i class="fa fa-spinner fa-pulse fa-5x"></i>
       </div>
-      <div class="carousel">
+      <div class="carousel" >
           {{ ShowSlides::show() }}
       </div>
       <header class="active">
@@ -144,7 +144,6 @@
         {{ HTML::script("js/plugins.js") }}
         {{ HTML::script("js/main.js") }}
         {{ HTML::script('js/slick/slick.min.js') }}
-        {{ HTML::script('js/custom.js') }}
         {{ HTML::script('js/jquery.coolcarousel.js') }}
         {{ HTML::script('js/jquery-ui-1.9.2.custom.js') }}
        
@@ -165,20 +164,7 @@
           ga('send', 'pageview');
 
         </script>
-        <script type="text/javascript">
-          //<![CDATA[
-          function getRootUrl () {
-            return window.location.origin?window.location.origin+'/':window.location.protocol+'/'+window.location.host+'/';
-          }
-          var myCirclePlayer = new CirclePlayer("#jquery_jplayer_1",
-          {
-            m4a: "http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a",
-            oga: "http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg"
-          }, {
-            cssSelectorAncestor: "#cp_container_1"
-          });
-          //]]>
-          </script>
+        {{ HTML::script('js/custom.js') }}
         <!--Start of Zopim Live Chat Script-->
         <script type="text/javascript">
         window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=

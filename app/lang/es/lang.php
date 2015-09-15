@@ -71,7 +71,7 @@
 	    "form_name" 				=> "Nombre",
 	    "form_lastname" 			=> "Apellido",
 	    "form_city" 				=> "Ciudad",
-	    "form_dir1"	 				=> "Dirección #1",
+	    "form_dir1"	 				=> "Dirección de Facturación",
 	    "form_dir2"	 				=> "Dirección #2",
 	    "form_phone"				=> "Telefono",
 	    "form_dep"					=> "Departamento/Estado",

@@ -29,6 +29,7 @@ class HomeController extends BaseController {
 	}
 	public function getFront()
 	{
+		
 		$title = "Portada";
 		$slides = Slides::where('deleted','=',0)
 		->where('pos','=',2)
@@ -40,7 +41,7 @@ class HomeController extends BaseController {
 	public function getIndex()
 	{
 		$title  = Lang::get('lang.title_index');
-		$cats   = Cat::where('deleted','=',0)->paginate(5);
+		$cats   = Cat::where('deleted','=',0)->get();
 		$i = 0;
 		$cat = array();
 		foreach ($cats as $c) {
@@ -343,5 +344,14 @@ class HomeController extends BaseController {
 		$title = ucfirst(strtolower(Lang::get('lang.term_title13')));
 		return View::make('indexs.pol')
 		->with('title',$title);
+	}
+	public function postPause()
+	{
+		if (Session::get('play') == 'play') {
+			Session::put('play','stop');
+		}else
+		{
+			Session::set('play', 'play');
+		}
 	}
 }

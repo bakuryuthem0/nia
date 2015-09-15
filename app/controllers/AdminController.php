@@ -1460,10 +1460,10 @@ class AdminController extends BaseController {
 	public function getPayment()
 	{
 		$title = "Pagos | Nia Boutique.com";
-		$fac = Facturas::join('direcciones','direcciones.id','=','facturas.dir')
-		->join('usuario','usuario.id','=','facturas.user_id')
+		$fac = Facturas::join('usuario','usuario.id','=','facturas.user_id')
 		->leftJoin('departamento','departamento.id','=','usuario.department')
 		->leftJoin('bancos','bancos.id','=','facturas.banco')
+		->leftJoin('sucursal','sucursal.id','=','facturas.dir')
 		->where('pagada','=',-1)->orderBy('facturas.id','DESC')
 		->get(
 			array(
@@ -1475,9 +1475,8 @@ class AdminController extends BaseController {
 				'usuario.telefono',
 				'usuario.email',
 				'departamento.nombre as dep_name',
+				'sucursal.nombre as sucursal',
 				'facturas.*',
-				'direcciones.email',
-				'direcciones.dir as dir_name',
 				'bancos.banco'
 			)
 		);

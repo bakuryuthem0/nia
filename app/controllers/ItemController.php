@@ -101,15 +101,10 @@ class ItemController extends BaseController {
 	public function getCart()
 	{
 		$title = "Mi carrito";
-		$c   = Dir::where('user_id','=',Auth::user()->id)->count();
-		if ($c > 0) {
-			$dir   = Dir::where('user_id','=',Auth::user()->id)->get();
-		}else{
-			$dir   = array();
-		}
+		$suc = Sucursal::where('deleted','=',0)->get();
 		return View::make('indexs.showCart')
 		->with('title',$title)
-		->with('dir',$dir);
+		->with('suc',$suc);
 	}
 	public function getRefresh()
 	{
@@ -136,10 +131,11 @@ class ItemController extends BaseController {
 	public function postDir()
 	{
 	if (Cart::count()<1) {
-			Session::flash('danger','Error, no posee articulos en el carrito');
+			Session::flash('danger','Lo sentimos, no posee articulos en el carrito');
 			return Redirect::back();
 		}
-		$id = Input::get('dir');
+		$suc = Input::get('suc');
+		/*$id = Input::get('dir');
 		if (empty($id) || is_null($id)) {
 			Session::flash('error', 'Debe seleccionar una dirección.');
 			return Redirect::back();
@@ -158,10 +154,10 @@ class ItemController extends BaseController {
 				$dir->save();
 				$id = $dir->id;
 			}
-		}
+		}*/
 		$fac = new Facturas;
 		$fac->user_id =  Auth::user()->id;
-		$fac->dir     = $id;
+		$fac->dir     = $suc;
 		if($fac->save())
 		{
 			foreach (Cart::content() as $c) {

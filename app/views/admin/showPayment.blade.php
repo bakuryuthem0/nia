@@ -50,8 +50,8 @@
 						<th class="textoPromedio">Datos de la transacción</th>
 						<th class="textoPromedio">Bouche</th>
 
-						<th class="textoPromedio">email</th>
-						<th class="textoPromedio">Dirección</th>
+						<th class="textoPromedio">Email</th>
+						<th class="textoPromedio">Sucursal</th>
 						<th class="textoPromedio">Factura</th>
 					</tr>
 				</thead>
@@ -71,11 +71,11 @@
 						<input type="hidden" class="dir-{{ $f->id }}" value="{{ $f->user_dir }}">
 						<input type="hidden" class="phone-{{ $f->id }}" value="{{ $f->telefono }}">
 						<input type="hidden" class="est-{{ $f->id }}" value="{{ $f->dep_name }}">
-						<td class="textoMedio noMovil">
-							<button class="btn btn-primary btn-xs verTransData" data-toggle="modal" data-target="#showTransData" value="{{ $f->id }}">
+						{{-- <td class="textoMedio noMovil">
+							<button class="btn btn-primary btn-xs verTransData" data-toggle="modal" data-target="#showTransData" value="">
 								Ver
 							</button>
-						</td>
+						</td> --}}
 						
 						<input type="hidden" class="bank-{{ $f->id }}" value="{{ $f->banco_name }}">
 						<input type="hidden" class="bank2-{{ $f->id }}" value="{{ $f->banco_ext }}">
@@ -84,7 +84,7 @@
 							<a href="{{ asset('images/pagos/'.$f->num_trans) }}" class="fancybox"><img src="{{ asset('images/pagos/'.$f->num_trans) }}"></a>
 						</td>
 						<td>{{ $f->email }}</td>
-						<td>{{ $f->dir_name }}</td>
+						<td>{{ $f->sucursal }}</td>
 						
 						<td><a href="{{ URL::to('administrador/ver-factura/'.$f->id) }}" target="_blank" class="btn btn-info btn-xs">Ver</a></td>
 						@if(!isset($type))
@@ -142,7 +142,7 @@
 					</p>
 				</div>
 				<div class="col-xs-12">
-					<p class="textoPromedio"><label>Departamento</label></p>
+					<p class="textoPromedio"><label>Provincia</label></p>
 					<p class="textoPromedio pagWebModal">
 
 					</p>

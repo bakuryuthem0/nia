@@ -8,8 +8,12 @@
     </h1>
   </div>
   <div class="contenido">
+    <?php $i = 1;?>
      @foreach($art as $a)
-            <div class="col-xs-3 contArtPrinc" data-id="{{ $a->id }}" data-toggle="modal" data-target="#showItem">
+      @if($i%4 == 0)
+        <div class="row">
+      @endif
+            <div class="col-xs-12 col-md-6 col-lg-3 contArtPrinc" data-id="{{ $a->id }}" data-toggle="modal" data-target="#showItem">
               <img src="{{ asset('images/items/'.$a->image) }}" class="imgArtPrinc imgPrinc">
               <ul class="textoPromedio ulNoStyle">
                 <li>
@@ -20,6 +24,11 @@
                 </li>
               </ul>
             </div>
+            @if($i%4 == 0)
+        <div class="clearfix"></div>
+      </div>
+      @endif
+            <?php $i++; ?>
         @endforeach
   </div>
 </div>

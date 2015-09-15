@@ -810,7 +810,9 @@ jQuery(document).ready(function($) {
 		}else
 		{
 			$.ajax({
-				url: 'http://niaboutique.tecnographic.com.ve/public/buscar/colores',
+				//url: 'http://niaboutique.tecnographic.com.ve/public/buscar/colores',
+				url: 'http://localhost/nia/public/buscar/colores',
+
 				type: 'POST',
 				dataType: 'json',
 				data: {'id': id,'item_id':item_id},
@@ -874,7 +876,9 @@ $('.colorModal').addClass('disabled').after('<p class="alerta">Lo sentimos, no p
 			}else
 			{
 				$.ajax({
-					url: 'http://niaboutique.tecnographic.com.ve/public/buscar/colores',
+					//url: 'http://niaboutique.tecnographic.com.ve/public/buscar/colores',
+					url: 'http://localhost/nia/public/buscar/colores',
+
 					type: 'POST',
 					dataType: 'json',
 					data: {'id': id,'item_id':item_id},
@@ -949,9 +953,9 @@ $('.colorModal').addClass('disabled').after('<p class="alerta">Lo sentimos, no p
 				}
 				$.ajax({
 					//casa
-					url: 'http://niaboutique.tecnographic.com.ve/public/agregar-al-carrito',
+					url: '/nia/public/agregar-al-carrito',
 					//trabajo
-					//url: '/prueba/Nia Boutique/public/agregar-al-carrito',
+					//url: 'http://niaboutique.tecnographic.com.ve/public/agregar-al-carrito',
 
 					type: 'POST',
 					dataType: 'json',
@@ -1995,13 +1999,42 @@ function updateNavigation(navigation, container) {
 function hideNavigation(navigation) {
 	navigation.find('a').removeClass('visible');
 }
-
+function getRootUrl () {
+	return window.location.origin?window.location.origin+'/':window.location.protocol+'/'+window.location.host+'/';
+}
 jQuery(document).ready(function($) {
-	$(window).load(function() {
-		$('.contLoading').animate({'opacity':0},1000,function() {
-			$(this).css({
-				'display': 'none'
-			});
-		})
+	$('.contLoading').animate({'opacity':0},1000,function() {
+		$(this).css({
+			'display': 'none'
+		});
 	})
+	var base = getRootUrl();
+	if($('#jquery_jplayer_1').length > 0)
+	{
+		
+	  	var myCirclePlayer = new CirclePlayer("#jquery_jplayer_1",
+	  	{
+	    	m4a: base+"nia/public/songs/niaboutique.m4a",
+	  	}, {
+	    	cssSelectorAncestor: "#cp_container_1"
+	  	});
+	  	$('#jquery_jplayer_1').jPlayer({preload: 'auto'})
+		$(window).load(function() {
+			
+			var status = $('body').data('play');
+		      $('#jquery_jplayer_1').jPlayer(status,0); 
+		      $('.cp-pause').on('click', function(event) {
+		        $.ajax({
+		            url: base+'nia/public/pausar',
+		            type: 'POST',
+		            dataType: 'json',
+		            success:function() {
+		              //
+		            }
+		          })                    
+		      });
+			 
+	          
+		})
+	}
 });

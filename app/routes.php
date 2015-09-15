@@ -199,3 +199,5 @@ Route::group(array('before' =>'auth'),function()
 
 Route::post('chequear/email','AuthController@postEmailCheck');
 Route::get('cerrar-sesion','AuthController@logOut');
+
+Route::post('pausar','HomeController@postPause');
